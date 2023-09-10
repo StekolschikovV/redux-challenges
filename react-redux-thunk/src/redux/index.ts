@@ -1,10 +1,16 @@
 import {applyMiddleware, combineReducers, createStore} from 'redux';
 import thunkMiddleware from 'redux-thunk';
-import dataReducer from "./reducers/dataReducer";
+import jokeReducer, {IJokeState} from "./reducers/jokeReducer";
+import lengthReducer, {ILengthState} from "./reducers/lengthReducer";
+
+export interface ISate {
+    joke: IJokeState
+    length: ILengthState
+}
 
 const rootReducer = combineReducers({
-    data: dataReducer,
-    // Другие редюсеры, если есть
+    joke: jokeReducer,
+    length: lengthReducer
 });
 
 const store = createStore(
