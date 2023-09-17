@@ -11,6 +11,7 @@ import Layout from "./components/Layout";
 import {ToastContainer} from "react-toastify";
 import store from "./store/store";
 import Catalog from "./Catalog";
+import Product from "./Product";
 
 const router = createBrowserRouter([
     {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
             {
                 path: "/catalog",
                 element: <Catalog/>,
+            },
+            {
+                path: "/product/:id",
+                element: <Product/>,
             },
             {
                 path: "authentication",

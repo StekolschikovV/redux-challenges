@@ -6,9 +6,6 @@ import {productAPI} from "./services/ProductService";
 const rootReducer = combineReducers({
     catalogReducer,
     userReducer,
-    lastAction(state = null, action) {
-        return action;
-    },
     [productAPI.reducerPath]: productAPI.reducer,
 
 })
