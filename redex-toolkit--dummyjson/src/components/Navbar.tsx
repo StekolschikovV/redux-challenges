@@ -2,12 +2,10 @@ import {useState} from "react";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faBars, faXmark} from '@fortawesome/free-solid-svg-icons'
 import {Link} from "react-router-dom";
+import {useAppDispatch, useAppSelector} from "../hooks/redux";
+import {userLogout} from "../store/reducers/ActionCreators";
 
 export const navLinks = [
-    {
-        id: "authentication",
-        title: "Authentication",
-    },
     {
         id: "catalog",
         title: "Catalog",
@@ -15,8 +13,13 @@ export const navLinks = [
 ];
 
 const Navbar = () => {
+
     const [active, setActive] = useState("Home");
     const [navbarOpen, setNavbarOpen] = useState(false);
+    const userState = useAppSelector(state => state.userReducer)
+    const dispatch = useAppDispatch()
+
+    console.log(userState)
 
     return (
         <>
@@ -55,6 +58,25 @@ const Navbar = () => {
                                     <span className="ml-2">{link.title}</span>
                                 </Link>
                             </li>)}
+                            {!userState?.user?.id && <li className="nav-item">
+                                <Link
+                                    className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+                                    to={`/authentication`}
+                                >
+                                    <i className="fab fa-facebook-square text-lg leading-lg text-white opacity-75"></i>
+                                    <span className="ml-2">Login</span>
+                                </Link>
+                            </li>}
+                            {userState?.user?.id && <li className="nav-item">
+                                <a
+                                    className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+                                    href={`#`}
+                                    onClick={_ => dispatch(userLogout())}
+                                >
+                                    <i className="fab fa-facebook-square text-lg leading-lg text-white opacity-75"></i>
+                                    <span className="ml-2">Logout</span>
+                                </a>
+                            </li>}
                         </ul>
                     </div>
                 </div>

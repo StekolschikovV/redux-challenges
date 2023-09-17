@@ -21,3 +21,9 @@ export const userLogin = createAsyncThunk(
         }
     }
 )
+
+export const userLogout = () => {
+    return {
+        type: 'user/logout',
+    }
+}
