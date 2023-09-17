@@ -1,6 +1,7 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {IUser} from "../../type";
 import {userLogin} from "./ActionCreators";
+import {toast} from "react-toastify";
 
 interface UserState {
     user: IUser | null;
@@ -19,10 +20,10 @@ export const userSlice = createSlice({
     initialState,
     reducers: {
         logout: (state) => {
-            console.log("logout")
             state.user = null;
             state.error = ""
             state.isLoading = false;
+            toast("You are logged out of your account")
         }
     },
     extraReducers: {
@@ -30,14 +31,18 @@ export const userSlice = createSlice({
             state.user = action.payload
             state.error = ""
             state.isLoading = false;
+            toast("You are logged in to your account")
+
         },
         [userLogin.pending.type]: (state) => {
             state.isLoading = true;
             state.error = ""
+            toast("Request for authorization to send")
         },
         [userLogin.rejected.type]: (state, action: PayloadAction<string>) => {
             state.error = action.payload
             state.isLoading = false;
+            toast("Error: " + state.error)
         },
     }
 })

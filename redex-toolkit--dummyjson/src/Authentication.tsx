@@ -1,10 +1,9 @@
 import React from 'react';
 import {userLogin} from "./store/reducers/ActionCreators";
-import {useAppDispatch, useAppSelector} from "./hooks/redux";
+import {useAppDispatch} from "./hooks/redux";
 
 
 const Authentication = (props: {}) => {
-    const {user, isLoading, error} = useAppSelector(state => state.userReducer)
 
     const dispatch = useAppDispatch()
 
@@ -50,14 +49,8 @@ const Authentication = (props: {}) => {
             <button type="submit"
                     className=" text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit
             </button>
-
-            <div className={"py-3"}>
-                {error}
-                {isLoading && "Loading..."}
-            </div>
         </form>
 
-        {JSON.stringify(user)}
     </>
 };
 
