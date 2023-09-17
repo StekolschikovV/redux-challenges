@@ -12,6 +12,7 @@ import {ToastContainer} from "react-toastify";
 import store from "./store/store";
 import Catalog from "./Catalog";
 import Product from "./Product";
+import Search from "./Search";
 
 const router = createBrowserRouter([
     {
@@ -29,6 +30,14 @@ const router = createBrowserRouter([
             {
                 path: "/product/:id",
                 element: <Product/>,
+            },
+            {
+                path: "/search/:text",
+                element: <Search/>,
+            },
+            {
+                path: "/search/",
+                element: <Search/>,
             },
             {
                 path: "authentication",

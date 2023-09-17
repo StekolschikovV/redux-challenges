@@ -14,6 +14,14 @@ export const productAPI = createApi({
             query: (id) => ({
                 url: `/${id}`
             }),
+        }),
+        fetchSearch: build.query<IProductList, string>({
+            query: (text) => ({
+                url: `/search`,
+                params: {
+                    q: text
+                }
+            }),
         })
     })
 })
