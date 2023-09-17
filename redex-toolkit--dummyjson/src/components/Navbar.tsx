@@ -3,7 +3,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faBars, faXmark} from '@fortawesome/free-solid-svg-icons'
 import {Link} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../hooks/redux";
-import {userLogout} from "../store/reducers/ActionCreators";
+import {userLogout} from "../store/reducers/user/ActionCreators";
 
 export const navLinks = [
     {
@@ -14,12 +14,9 @@ export const navLinks = [
 
 const Navbar = () => {
 
-    const [active, setActive] = useState("Home");
     const [navbarOpen, setNavbarOpen] = useState(false);
     const userState = useAppSelector(state => state.userReducer)
     const dispatch = useAppDispatch()
-
-    console.log(userState)
 
     return (
         <>
@@ -70,7 +67,7 @@ const Navbar = () => {
                             {userState?.user?.id && <li className="nav-item">
                                 <a
                                     className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                                    href={`#`}
+                                    href={`/`}
                                     onClick={_ => dispatch(userLogout())}
                                 >
                                     <i className="fab fa-facebook-square text-lg leading-lg text-white opacity-75"></i>

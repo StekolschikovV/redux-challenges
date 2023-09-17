@@ -1,6 +1,6 @@
 import React from 'react';
-import {userLogin} from "./store/reducers/ActionCreators";
 import {useAppDispatch} from "./hooks/redux";
+import {userLogin} from "./store/reducers/user/ActionCreators";
 
 
 const Authentication = (props: {}) => {

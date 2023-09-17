@@ -4,12 +4,13 @@ import {Provider} from "react-redux";
 import {createBrowserRouter, RouterProvider,} from "react-router-dom";
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import {setupStore} from "./store/store";
 import 'react-toastify/dist/ReactToastify.css';
 import Home from "./Home";
 import Authentication from "./Authentication";
 import Layout from "./components/Layout";
 import {ToastContainer} from "react-toastify";
+import store from "./store/store";
+import Catalog from "./Catalog";
 
 const router = createBrowserRouter([
     {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
                 element: <Home/>,
             },
             {
+                path: "/catalog",
+                element: <Catalog/>,
+            },
+            {
                 path: "authentication",
                 element: <Authentication/>,
             },
@@ -28,7 +33,6 @@ const router = createBrowserRouter([
     }
 ]);
 
-const store = setupStore();
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );

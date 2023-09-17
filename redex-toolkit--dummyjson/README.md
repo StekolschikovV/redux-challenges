@@ -1,18 +1,5 @@
 - Show all users https://dummyjson.com/users
-- Login https://dummyjson.com/auth/login
 
-```js
-fetch('https://dummyjson.com/auth/login', {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({
-        username: 'kminchelle',
-        password: '0lelplR',
-    })
-})
-    .then(res => res.json())
-    .then(console.log);
-```
 
 - Products list https://dummyjson.com/products
 - Product search https://dummyjson.com/products/search?q=phone

@@ -1,5 +1,5 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import {IUserCredentials} from "../../type";
+import {IUserCredentials} from "../../../type";
 
 export const userLogin = createAsyncThunk(
     'user/login',
